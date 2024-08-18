@@ -28,10 +28,13 @@ OOOO
 OOOOOOOOOOO
 `)
 
-	if minuteConverted > 0 {
-		sb.WriteString("YOOO")
-	} else {
-		sb.WriteString("OOOO")
+	minutesRemainder := minuteConverted % 5
+	for i := 1; i < 5; i++ {
+		if i <= minutesRemainder {
+			sb.WriteString("Y")
+		} else {
+			sb.WriteString("O")
+		}
 	}
 
 	return sb.String()
