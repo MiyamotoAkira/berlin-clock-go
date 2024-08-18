@@ -7,18 +7,14 @@ import (
 )
 
 func GetClockString(time string) string {
-	second := time[len(time)-1 : len(time)]
 	var sb strings.Builder
-
-	converted, err := strconv.Atoi(second)
-
+	second := time[len(time)-1 : len(time)]
+	secondConverted, err := strconv.Atoi(second)
 	if err != nil {
 		fmt.Print("error")
 	}
 
-	isEven := converted%2 == 0
-
-	if isEven {
+	if secondConverted%2 == 0 {
 		sb.WriteString("O")
 	} else {
 		sb.WriteString("Y")
