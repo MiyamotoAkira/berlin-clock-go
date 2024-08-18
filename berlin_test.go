@@ -233,3 +233,39 @@ OOOO`
 
 	assert.Equal(t, expected, actual)
 }
+
+func TestFiveHoursPastMidnight(t *testing.T) {
+	actual := berlin.GetClockString("05:00:00")
+
+	expected := `O
+ROOO
+OOOO
+OOOOOOOOOOO
+OOOO`
+
+	assert.Equal(t, expected, actual)
+}
+
+func TestTenHoursPastMidnight(t *testing.T) {
+	actual := berlin.GetClockString("10:00:00")
+
+	expected := `O
+RROO
+OOOO
+OOOOOOOOOOO
+OOOO`
+
+	assert.Equal(t, expected, actual)
+}
+
+func TestTwentyThreeHoursPastMidnight(t *testing.T) {
+	actual := berlin.GetClockString("23:00:00")
+
+	expected := `O
+RRRR
+RRRO
+OOOOOOOOOOO
+OOOO`
+
+	assert.Equal(t, expected, actual)
+}
