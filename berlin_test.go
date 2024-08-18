@@ -77,3 +77,27 @@ YYOO`
 
 	assert.Equal(t, expected, actual)
 }
+
+func TestThreeMinutesPastMidnight(t *testing.T) {
+	actual := berlin.GetClockString("00:03:00")
+
+	expected := `O
+OOOO
+OOOO
+OOOOOOOOOOO
+YYYO`
+
+	assert.Equal(t, expected, actual)
+}
+
+func TestFourMinutesPastMidnight(t *testing.T) {
+	actual := berlin.GetClockString("00:04:00")
+
+	expected := `O
+OOOO
+OOOO
+OOOOOOOOOOO
+YYYY`
+
+	assert.Equal(t, expected, actual)
+}
