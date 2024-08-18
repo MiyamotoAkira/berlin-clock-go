@@ -8,11 +8,13 @@ import (
 
 func GetClockString(time string) string {
 	var sb strings.Builder
-	second := time[len(time)-1 : len(time)]
+	second := time[7:8]
 	secondConverted, err := strconv.Atoi(second)
 	if err != nil {
 		fmt.Print("error")
 	}
+	minute := time[3:5]
+	minuteConverted, err := strconv.Atoi(minute)
 
 	if secondConverted%2 == 0 {
 		sb.WriteString("O")
@@ -24,7 +26,13 @@ func GetClockString(time string) string {
 OOOO
 OOOO
 OOOOOOOOOOO
-OOOO`)
+`)
+
+	if minuteConverted > 0 {
+		sb.WriteString("YOOO")
+	} else {
+		sb.WriteString("OOOO")
+	}
 
 	return sb.String()
 }
