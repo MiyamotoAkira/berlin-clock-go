@@ -3,10 +3,12 @@ package berlin_clock
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 func GetClockString(time string) string {
 	second := time[len(time)-1 : len(time)]
+	var sb strings.Builder
 
 	converted, err := strconv.Atoi(second)
 
@@ -17,15 +19,16 @@ func GetClockString(time string) string {
 	isEven := converted%2 == 0
 
 	if isEven {
-		return `O
-OOOO
-OOOO
-OOOOOOOOOOO
-OOOO`
+		sb.WriteString("O")
+	} else {
+		sb.WriteString("Y")
 	}
-	return `Y
+
+	sb.WriteString(`
 OOOO
 OOOO
 OOOOOOOOOOO
-OOOO`
+OOOO`)
+
+	return sb.String()
 }
