@@ -25,8 +25,18 @@ func GetClockString(time string) string {
 	sb.WriteString(`
 OOOO
 OOOO
-OOOOOOOOOOO
 `)
+
+	minutesRest := minuteConverted / 5
+	for i := 1; i < 12; i++ {
+		if i <= minutesRest {
+			sb.WriteString("Y")
+		} else {
+			sb.WriteString("O")
+		}
+	}
+
+	sb.WriteString("\n")
 
 	minutesRemainder := minuteConverted % 5
 	for i := 1; i < 5; i++ {

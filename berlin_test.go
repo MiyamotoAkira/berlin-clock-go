@@ -101,3 +101,51 @@ YYYY`
 
 	assert.Equal(t, expected, actual)
 }
+
+func TestFiveMinutesPastMidnight(t *testing.T) {
+	actual := berlin.GetClockString("00:05:00")
+
+	expected := `O
+OOOO
+OOOO
+YOOOOOOOOOO
+OOOO`
+
+	assert.Equal(t, expected, actual)
+}
+
+func TestSixMinutesPastMidnight(t *testing.T) {
+	actual := berlin.GetClockString("00:06:00")
+
+	expected := `O
+OOOO
+OOOO
+YOOOOOOOOOO
+YOOO`
+
+	assert.Equal(t, expected, actual)
+}
+
+func TestSevenMinutesPastMidnight(t *testing.T) {
+	actual := berlin.GetClockString("00:07:00")
+
+	expected := `O
+OOOO
+OOOO
+YOOOOOOOOOO
+YYOO`
+
+	assert.Equal(t, expected, actual)
+}
+
+func TestTenMinutesPastMidnight(t *testing.T) {
+	actual := berlin.GetClockString("00:10:00")
+
+	expected := `O
+OOOO
+OOOO
+YYOOOOOOOOO
+OOOO`
+
+	assert.Equal(t, expected, actual)
+}
