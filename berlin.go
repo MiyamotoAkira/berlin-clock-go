@@ -14,9 +14,9 @@ func GetClockString(time string) string {
 		fmt.Print("error")
 	}
 
-	is_even := converted%2 == 0
+	isEven := converted%2 == 0
 
-	if is_even {
+	if isEven {
 		return `O
 OOOO
 OOOO
