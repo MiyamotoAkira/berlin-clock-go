@@ -19,9 +19,9 @@ func GetClockString(time string) string {
 	hourConverted, err := strconv.Atoi(hour)
 
 	if secondConverted%2 == 0 {
-		sb.WriteString("O")
-	} else {
 		sb.WriteString("Y")
+	} else {
+		sb.WriteString("O")
 	}
 	sb.WriteString("\n")
 

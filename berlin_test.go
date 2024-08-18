@@ -9,7 +9,7 @@ import (
 func TestMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:00:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 OOOOOOOOOOO
@@ -21,7 +21,7 @@ OOOO`
 func TestOneSecondPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:00:01")
 
-	expected := `Y
+	expected := `O
 OOOO
 OOOO
 OOOOOOOOOOO
@@ -33,7 +33,7 @@ OOOO`
 func TestTwoSecondsPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:00:02")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 OOOOOOOOOOO
@@ -45,7 +45,7 @@ OOOO`
 func TestThreeSecondsPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:00:03")
 
-	expected := `Y
+	expected := `O
 OOOO
 OOOO
 OOOOOOOOOOO
@@ -57,7 +57,7 @@ OOOO`
 func TestOneMinutePastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:01:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 OOOOOOOOOOO
@@ -69,7 +69,7 @@ YOOO`
 func TestTwoMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:02:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 OOOOOOOOOOO
@@ -81,7 +81,7 @@ YYOO`
 func TestThreeMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:03:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 OOOOOOOOOOO
@@ -93,7 +93,7 @@ YYYO`
 func TestFourMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:04:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 OOOOOOOOOOO
@@ -105,7 +105,7 @@ YYYY`
 func TestFiveMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:05:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 YOOOOOOOOOO
@@ -117,7 +117,7 @@ OOOO`
 func TestSixMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:06:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 YOOOOOOOOOO
@@ -129,7 +129,7 @@ YOOO`
 func TestSevenMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:07:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 YOOOOOOOOOO
@@ -141,7 +141,7 @@ YYOO`
 func TestTenMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:10:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 YYOOOOOOOOO
@@ -153,7 +153,7 @@ OOOO`
 func TestFifteenMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:15:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 YYROOOOOOOO
@@ -165,7 +165,7 @@ OOOO`
 func TestThirtyMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:30:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 YYRYYROOOOO
@@ -177,7 +177,7 @@ OOOO`
 func TestFiftyFiveMinutesPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("00:55:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 OOOO
 YYRYYRYYRYY
@@ -189,7 +189,7 @@ OOOO`
 func TestOneHourPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("01:00:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 ROOO
 OOOOOOOOOOO
@@ -201,7 +201,7 @@ OOOO`
 func TestTwoHoursPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("02:00:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 RROO
 OOOOOOOOOOO
@@ -213,7 +213,7 @@ OOOO`
 func TestThreeHoursPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("03:00:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 RRRO
 OOOOOOOOOOO
@@ -225,7 +225,7 @@ OOOO`
 func TestFourHoursPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("04:00:00")
 
-	expected := `O
+	expected := `Y
 OOOO
 RRRR
 OOOOOOOOOOO
@@ -237,7 +237,7 @@ OOOO`
 func TestFiveHoursPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("05:00:00")
 
-	expected := `O
+	expected := `Y
 ROOO
 OOOO
 OOOOOOOOOOO
@@ -249,7 +249,7 @@ OOOO`
 func TestTenHoursPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("10:00:00")
 
-	expected := `O
+	expected := `Y
 RROO
 OOOO
 OOOOOOOOOOO
@@ -261,11 +261,23 @@ OOOO`
 func TestTwentyThreeHoursPastMidnight(t *testing.T) {
 	actual := berlin.GetClockString("23:00:00")
 
-	expected := `O
+	expected := `Y
 RRRR
 RRRO
 OOOOOOOOOOO
 OOOO`
+
+	assert.Equal(t, expected, actual)
+}
+
+func TestExampleFromReadme(t *testing.T) {
+	actual := berlin.GetClockString("12:56:01")
+
+	expected := `O
+RROO
+RROO
+YYRYYRYYRYY
+YOOO`
 
 	assert.Equal(t, expected, actual)
 }
