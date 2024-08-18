@@ -30,7 +30,11 @@ OOOO
 	minutesRest := minuteConverted / 5
 	for i := 1; i < 12; i++ {
 		if i <= minutesRest {
-			sb.WriteString("Y")
+			if i%3 == 0 {
+				sb.WriteString("R")
+			} else {
+				sb.WriteString("Y")
+			}
 		} else {
 			sb.WriteString("O")
 		}
