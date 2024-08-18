@@ -15,6 +15,8 @@ func GetClockString(time string) string {
 	}
 	minute := time[3:5]
 	minuteConverted, err := strconv.Atoi(minute)
+	hour := time[0:2]
+	hourConverted, err := strconv.Atoi(hour)
 
 	if secondConverted%2 == 0 {
 		sb.WriteString("O")
@@ -26,7 +28,15 @@ func GetClockString(time string) string {
 	sb.WriteString("OOOO")
 	sb.WriteString("\n")
 
-	sb.WriteString("OOOO")
+	hoursRemainder := hourConverted % 5
+	for i := 1; i < 5; i++ {
+		if i <= hoursRemainder {
+			sb.WriteString("R")
+		} else {
+			sb.WriteString("O")
+		}
+	}
+
 	sb.WriteString("\n")
 
 	minutesRest := minuteConverted / 5
