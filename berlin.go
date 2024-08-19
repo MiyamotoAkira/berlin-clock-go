@@ -10,56 +10,66 @@ func GetClockString(time string) string {
 	var sb strings.Builder
 	secondConverted, minuteConverted, hourConverted := extractTimeComponents(time)
 
+	var secondMarker string
 	if secondConverted%2 == 0 {
-		sb.WriteString("Y")
+		secondMarker = "Y"
 	} else {
-		sb.WriteString("O")
+		secondMarker = "O"
 	}
+	sb.WriteString(secondMarker)
 	sb.WriteString("\n")
 
 	hoursRest := hourConverted / 5
 	for i := 1; i < 5; i++ {
+		var topHourMarker string
 		if i <= hoursRest {
-			sb.WriteString("R")
+			topHourMarker = "R"
 		} else {
-			sb.WriteString("O")
+			topHourMarker = "O"
 		}
+		sb.WriteString(topHourMarker)
 	}
 	sb.WriteString("\n")
 
 	hoursRemainder := hourConverted % 5
 	for i := 1; i < 5; i++ {
+		var bottomHourMarker string
 		if i <= hoursRemainder {
-			sb.WriteString("R")
+			bottomHourMarker = "R"
 		} else {
-			sb.WriteString("O")
+			bottomHourMarker = "O"
 		}
+		sb.WriteString(bottomHourMarker)
 	}
 
 	sb.WriteString("\n")
 
 	minutesRest := minuteConverted / 5
 	for i := 1; i < 12; i++ {
+		var topMinuteMarker string
 		if i <= minutesRest {
 			if i%3 == 0 {
-				sb.WriteString("R")
+				topMinuteMarker = "R"
 			} else {
-				sb.WriteString("Y")
+				topMinuteMarker = "Y"
 			}
 		} else {
-			sb.WriteString("O")
+			topMinuteMarker = "O"
 		}
+		sb.WriteString(topMinuteMarker)
 	}
 
 	sb.WriteString("\n")
 
 	minutesRemainder := minuteConverted % 5
 	for i := 1; i < 5; i++ {
+		var bottomMinuteMarker string
 		if i <= minutesRemainder {
-			sb.WriteString("Y")
+			bottomMinuteMarker = "Y"
 		} else {
-			sb.WriteString("O")
+			bottomMinuteMarker = "O"
 		}
+		sb.WriteString(bottomMinuteMarker)
 	}
 
 	return sb.String()
