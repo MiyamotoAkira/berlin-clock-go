@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+const RED_MARKER = "R"
+const YELLOW_MARKER = "Y"
+const OFF_MARKER = "O"
+
 func GetClockString(time string) string {
 	var sb strings.Builder
 	secondConverted, minuteConverted, hourConverted := extractTimeComponents(time)
@@ -29,9 +33,9 @@ func GetClockString(time string) string {
 
 func getSecondMarker(secondConverted int) string {
 	if secondConverted%2 == 0 {
-		return "Y"
+		return YELLOW_MARKER
 	} else {
-		return "O"
+		return OFF_MARKER
 	}
 }
 
@@ -41,9 +45,9 @@ func getBottomMinuteMarker(minuteConverted int) string {
 	for i := 1; i < 5; i++ {
 		var bottomMinuteSingleMarker string
 		if i <= minutesRemainder {
-			bottomMinuteSingleMarker = "Y"
+			bottomMinuteSingleMarker = YELLOW_MARKER
 		} else {
-			bottomMinuteSingleMarker = "O"
+			bottomMinuteSingleMarker = OFF_MARKER
 		}
 		bottomMinuteMarkerBuilder.WriteString(bottomMinuteSingleMarker)
 	}
@@ -58,12 +62,12 @@ func getTopMinuteMarker(minuteConverted int) string {
 		var topMinuteSingleMarker string
 		if i <= minutesRest {
 			if i%3 == 0 {
-				topMinuteSingleMarker = "R"
+				topMinuteSingleMarker = RED_MARKER
 			} else {
-				topMinuteSingleMarker = "Y"
+				topMinuteSingleMarker = YELLOW_MARKER
 			}
 		} else {
-			topMinuteSingleMarker = "O"
+			topMinuteSingleMarker = OFF_MARKER
 		}
 		topMinuteMarkerBuilder.WriteString(topMinuteSingleMarker)
 	}
@@ -77,9 +81,9 @@ func getBottomHourMarker(hourConverted int) string {
 	for i := 1; i < 5; i++ {
 		var bottomHourSingleMarker string
 		if i <= hoursRemainder {
-			bottomHourSingleMarker = "R"
+			bottomHourSingleMarker = RED_MARKER
 		} else {
-			bottomHourSingleMarker = "O"
+			bottomHourSingleMarker = OFF_MARKER
 		}
 		bottomHourMarkerBuilder.WriteString(bottomHourSingleMarker)
 	}
@@ -92,9 +96,9 @@ func getTopHourMarker(hourConverted int) string {
 	for i := 1; i < 5; i++ {
 		var topHourSingleMarker string
 		if i <= hoursRest {
-			topHourSingleMarker = "R"
+			topHourSingleMarker = RED_MARKER
 		} else {
-			topHourSingleMarker = "O"
+			topHourSingleMarker = OFF_MARKER
 		}
 		topHourMarkerBuilder.WriteString(topHourSingleMarker)
 	}
