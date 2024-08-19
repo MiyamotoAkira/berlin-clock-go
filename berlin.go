@@ -19,32 +19,47 @@ func GetClockString(time string) string {
 	sb.WriteString(secondMarker)
 	sb.WriteString("\n")
 
-	hoursRest := hourConverted / 5
-	for i := 1; i < 5; i++ {
-		var topHourSingleMarker string
-		if i <= hoursRest {
-			topHourSingleMarker = "R"
-		} else {
-			topHourSingleMarker = "O"
-		}
-		sb.WriteString(topHourSingleMarker)
-	}
+	topHourMarker := getTopHourMarker(hourConverted)
+
+	sb.WriteString(topHourMarker)
 	sb.WriteString("\n")
 
-	hoursRemainder := hourConverted % 5
-	for i := 1; i < 5; i++ {
-		var bottomHourSingleMarker string
-		if i <= hoursRemainder {
-			bottomHourSingleMarker = "R"
-		} else {
-			bottomHourSingleMarker = "O"
-		}
-		sb.WriteString(bottomHourSingleMarker)
-	}
+	bottomHourMarker := getBottomHourMarker(hourConverted)
 
+	sb.WriteString(bottomHourMarker)
 	sb.WriteString("\n")
 
+	topMinuteMarker := getTopMinuteMarker(minuteConverted)
+
+	sb.WriteString(topMinuteMarker)
+	sb.WriteString("\n")
+
+	bottomMinuteMarker := getBottomMinuteMarker(minuteConverted)
+
+	sb.WriteString(bottomMinuteMarker)
+
+	return sb.String()
+}
+
+func getBottomMinuteMarker(minuteConverted int) string {
+	minutesRemainder := minuteConverted % 5
+	var bottomMinuteMarkerBuilder strings.Builder
+	for i := 1; i < 5; i++ {
+		var bottomMinuteSingleMarker string
+		if i <= minutesRemainder {
+			bottomMinuteSingleMarker = "Y"
+		} else {
+			bottomMinuteSingleMarker = "O"
+		}
+		bottomMinuteMarkerBuilder.WriteString(bottomMinuteSingleMarker)
+	}
+	return bottomMinuteMarkerBuilder.String()
+
+}
+
+func getTopMinuteMarker(minuteConverted int) string {
 	minutesRest := minuteConverted / 5
+	var topMinuteMarkerBuilder strings.Builder
 	for i := 1; i < 12; i++ {
 		var topMinuteSingleMarker string
 		if i <= minutesRest {
@@ -56,23 +71,40 @@ func GetClockString(time string) string {
 		} else {
 			topMinuteSingleMarker = "O"
 		}
-		sb.WriteString(topMinuteSingleMarker)
+		topMinuteMarkerBuilder.WriteString(topMinuteSingleMarker)
 	}
+	return topMinuteMarkerBuilder.String()
 
-	sb.WriteString("\n")
+}
 
-	minutesRemainder := minuteConverted % 5
+func getBottomHourMarker(hourConverted int) string {
+	hoursRemainder := hourConverted % 5
+	var bottomHourMarkerBuilder strings.Builder
 	for i := 1; i < 5; i++ {
-		var bottomMinuteSingleMarker string
-		if i <= minutesRemainder {
-			bottomMinuteSingleMarker = "Y"
+		var bottomHourSingleMarker string
+		if i <= hoursRemainder {
+			bottomHourSingleMarker = "R"
 		} else {
-			bottomMinuteSingleMarker = "O"
+			bottomHourSingleMarker = "O"
 		}
-		sb.WriteString(bottomMinuteSingleMarker)
+		bottomHourMarkerBuilder.WriteString(bottomHourSingleMarker)
 	}
+	return bottomHourMarkerBuilder.String()
+}
 
-	return sb.String()
+func getTopHourMarker(hourConverted int) string {
+	hoursRest := hourConverted / 5
+	var topHourMarkerBuilder strings.Builder
+	for i := 1; i < 5; i++ {
+		var topHourSingleMarker string
+		if i <= hoursRest {
+			topHourSingleMarker = "R"
+		} else {
+			topHourSingleMarker = "O"
+		}
+		topHourMarkerBuilder.WriteString(topHourSingleMarker)
+	}
+	return topHourMarkerBuilder.String()
 }
 
 func extractTimeComponents(time string) (int, int, int) {
