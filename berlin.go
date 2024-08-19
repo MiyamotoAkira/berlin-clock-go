@@ -28,13 +28,11 @@ func GetClockString(time string) string {
 }
 
 func getSecondMarker(secondConverted int) string {
-	var secondMarker string
 	if secondConverted%2 == 0 {
-		secondMarker = "Y"
+		return "Y"
 	} else {
-		secondMarker = "O"
+		return "O"
 	}
-	return secondMarker
 }
 
 func getBottomMinuteMarker(minuteConverted int) string {
