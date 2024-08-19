@@ -10,35 +10,31 @@ func GetClockString(time string) string {
 	var sb strings.Builder
 	secondConverted, minuteConverted, hourConverted := extractTimeComponents(time)
 
+	sb.WriteString(getSecondMarker(secondConverted))
+	sb.WriteString("\n")
+
+	sb.WriteString(getTopHourMarker(hourConverted))
+	sb.WriteString("\n")
+
+	sb.WriteString(getBottomHourMarker(hourConverted))
+	sb.WriteString("\n")
+
+	sb.WriteString(getTopMinuteMarker(minuteConverted))
+	sb.WriteString("\n")
+
+	sb.WriteString(getBottomMinuteMarker(minuteConverted))
+
+	return sb.String()
+}
+
+func getSecondMarker(secondConverted int) string {
 	var secondMarker string
 	if secondConverted%2 == 0 {
 		secondMarker = "Y"
 	} else {
 		secondMarker = "O"
 	}
-	sb.WriteString(secondMarker)
-	sb.WriteString("\n")
-
-	topHourMarker := getTopHourMarker(hourConverted)
-
-	sb.WriteString(topHourMarker)
-	sb.WriteString("\n")
-
-	bottomHourMarker := getBottomHourMarker(hourConverted)
-
-	sb.WriteString(bottomHourMarker)
-	sb.WriteString("\n")
-
-	topMinuteMarker := getTopMinuteMarker(minuteConverted)
-
-	sb.WriteString(topMinuteMarker)
-	sb.WriteString("\n")
-
-	bottomMinuteMarker := getBottomMinuteMarker(minuteConverted)
-
-	sb.WriteString(bottomMinuteMarker)
-
-	return sb.String()
+	return secondMarker
 }
 
 func getBottomMinuteMarker(minuteConverted int) string {
