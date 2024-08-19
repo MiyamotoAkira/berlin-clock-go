@@ -8,15 +8,7 @@ import (
 
 func GetClockString(time string) string {
 	var sb strings.Builder
-	second := time[7:8]
-	secondConverted, err := strconv.Atoi(second)
-	if err != nil {
-		fmt.Print("error")
-	}
-	minute := time[3:5]
-	minuteConverted, err := strconv.Atoi(minute)
-	hour := time[0:2]
-	hourConverted, err := strconv.Atoi(hour)
+	secondConverted, minuteConverted, hourConverted := extractTimeComponents(time)
 
 	if secondConverted%2 == 0 {
 		sb.WriteString("Y")
@@ -71,4 +63,17 @@ func GetClockString(time string) string {
 	}
 
 	return sb.String()
+}
+
+func extractTimeComponents(time string) (int, int, int) {
+	second := time[7:8]
+	secondConverted, err := strconv.Atoi(second)
+	if err != nil {
+		fmt.Print("error")
+	}
+	minute := time[3:5]
+	minuteConverted, err := strconv.Atoi(minute)
+	hour := time[0:2]
+	hourConverted, err := strconv.Atoi(hour)
+	return secondConverted, minuteConverted, hourConverted
 }
